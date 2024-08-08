@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Bill</title>
+    <title>NARMADA JALAVITHARANA SAMITHI</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -31,29 +31,12 @@
             text-align: center;
             margin-top: 20px;
         }
-        .print-button {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .print-button button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .print-button button:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
     <div class="bill-container">
         <div class="bill-header">
-            <h1>Water Bill</h1>
+            <h1>NARMADA JALAVITHARANA SAMITHI</h1>
         </div>
         <div class="bill-details">
             <p><strong>Consumer ID:</strong> <span id="consumerID"></span></p>
@@ -64,9 +47,6 @@
             <p><strong>Bill Amount:</strong> <span id="billAmount"></span></p>
             <p><strong>Previous Balance:</strong> <span id="previousBalance"></span></p>
             <p><strong>Total Amount:</strong> <span id="totalAmount"></span></p>
-        </div>
-        <div class="print-button">
-            <button onclick="window.print()">Print</button>
         </div>
         <div class="bill-footer">
             <p>Thank you for using our services!</p>
@@ -100,7 +80,10 @@
             document.getElementById('totalAmount').textContent = params.totalAmount;
         }
 
-        window.onload = populateBillDetails;
+        window.onload = function() {
+            populateBillDetails();
+            window.print(); // Automatically triggers the print dialog
+        };
     </script>
 </body>
 </html>
