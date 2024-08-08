@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Utility Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .bill-details, .customer-details, .usage-details {
+            margin-bottom: 20px;
+        }
+        .bill-details h2, .customer-details h2, .usage-details h2 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .total {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Water Utility Bill</h1>
+            <p>Company Name</p>
+        </div>
+        
+        <div class="bill-details">
+            <h2>Bill Details</h2>
+            <p>Bill Number: <strong>#123456</strong></p>
+            <p>Billing Date: <strong>2024-08-01</strong></p>
+            <p>Due Date: <strong>2024-08-15</strong></p>
+        </div>
+        
+        <div class="customer-details">
+            <h2>Customer Details</h2>
+            <p>Name: <strong>John Doe</strong></p>
+            <p>Address: <strong>1234 Main St, Athirappilly</strong></p>
+            <p>Account Number: <strong>987654321</strong></p>
+        </div>
+        
+        <div class="usage-details">
+            <h2>Usage Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Water Usage</td>
+                        <td>50 m<sup>3</sup></td>
+                        <td>$2.00/m<sup>3</sup></td>
+                        <td>$100.00</td>
+                    </tr>
+                    <tr>
+                        <td>Sewer Service</td>
+                        <td>1</td>
+                        <td>$20.00</td>
+                        <td>$20.00</td>
+                    </tr>
+                    <tr>
+                        <td>Other Charges</td>
+                        <td>1</td>
+                        <td>$10.00</td>
+                        <td>$10.00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="total">Total Amount Due</td>
+                        <td>$130.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>Thank you for your payment!</p>
+        </div>
+    </div>
+</body>
+</html>
