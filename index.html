@@ -3,116 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Utility Bill</title>
+    <title>Water Bill</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            background-color: #fff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .header, .footer {
+        .bill-container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .bill-header {
             text-align: center;
             margin-bottom: 20px;
         }
-        .header h1 {
-            margin: 0;
-        }
-        .bill-details, .customer-details, .usage-details {
+        .bill-details {
             margin-bottom: 20px;
         }
-        .bill-details h2, .customer-details h2, .usage-details h2 {
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
+        .bill-details p {
+            margin: 5px 0;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .bill-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .print-button {
+            display: flex;
+            justify-content: center;
             margin-bottom: 20px;
         }
-        table, th, td {
-            border: 1px solid #000;
+        .print-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        .total {
-            text-align: right;
+        .print-button button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Water Utility Bill</h1>
-            <p>Narmadha Jalavidharana Samithi</p>
+    <div class="bill-container">
+        <div class="bill-header">
+            <h1>Water Bill</h1>
         </div>
-        
         <div class="bill-details">
-            <h2>Bill Details</h2>
-            <p>Bill Number: <strong>#123456</strong></p>
-            <p>Billing Date: <strong>2024-08-01</strong></p>
-            <p>Due Date: <strong>2024-08-15</strong></p>
+            <p><strong>Consumer ID:</strong> <span id="consumerID"></span></p>
+            <p><strong>Date:</strong> <span id="date"></span></p>
+            <p><strong>Previous Reading:</strong> <span id="previousReading"></span></p>
+            <p><strong>Current Reading:</strong> <span id="currentReading"></span></p>
+            <p><strong>Consumption:</strong> <span id="consumption"></span></p>
+            <p><strong>Bill Amount:</strong> <span id="billAmount"></span></p>
+            <p><strong>Previous Balance:</strong> <span id="previousBalance"></span></p>
+            <p><strong>Total Amount:</strong> <span id="totalAmount"></span></p>
         </div>
-        
-        <div class="customer-details">
-            <h2>Customer Details</h2>
-            <p>Name: <strong>John Doe</strong></p>
-            <p>Address: <strong>1234 Main St, Athirappilly</strong></p>
-            <p>Account Number: <strong>987654321</strong></p>
+        <div class="print-button">
+            <button onclick="window.print()">Print</button>
         </div>
-        
-        <div class="usage-details">
-            <h2>Usage Details</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>Rate</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Water Usage</td>
-                        <td>50 m<sup>3</sup></td>
-                        <td>$2.00/m<sup>3</sup></td>
-                        <td>$100.00</td>
-                    </tr>
-                    <tr>
-                        <td>Sewer Service</td>
-                        <td>1</td>
-                        <td>$20.00</td>
-                        <td>$20.00</td>
-                    </tr>
-                    <tr>
-                        <td>Other Charges</td>
-                        <td>1</td>
-                        <td>$10.00</td>
-                        <td>$10.00</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3" class="total">Total Amount Due</td>
-                        <td>$130.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        
-        <div class="footer">
-            <p>Thank you for your payment!</p>
+        <div class="bill-footer">
+            <p>Thank you for using our services!</p>
         </div>
     </div>
+
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                consumerID: params.get('ConsumerID'),
+                date: params.get('Date'),
+                previousReading: params.get('PreviousReading'),
+                currentReading: params.get('CurrentReading'),
+                consumption: params.get('Consumption'),
+                billAmount: params.get('BillAmount'),
+                previousBalance: params.get('PreviousBalance'),
+                totalAmount: params.get('TotalAmount')
+            };
+        }
+
+        function populateBillDetails() {
+            const params = getUrlParams();
+            document.getElementById('consumerID').textContent = params.consumerID;
+            document.getElementById('date').textContent = params.date;
+            document.getElementById('previousReading').textContent = params.previousReading;
+            document.getElementById('currentReading').textContent = params.currentReading;
+            document.getElementById('consumption').textContent = params.consumption;
+            document.getElementById('billAmount').textContent = params.billAmount;
+            document.getElementById('previousBalance').textContent = params.previousBalance;
+            document.getElementById('totalAmount').textContent = params.totalAmount;
+        }
+
+        window.onload = populateBillDetails;
+    </script>
 </body>
 </html>
